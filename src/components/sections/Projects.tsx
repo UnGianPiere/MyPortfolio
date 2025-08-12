@@ -87,8 +87,8 @@ export default function Projects() {
         <section id='projects' className="relative justify-center items-center flex flex-col gap-4 py-20 ">
 
             {projects.map((project, num) => (
-                <div key={num} className="w-[70%] h-110 bg-[#5353531c] rounded-[8px] flex overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                    <div className="relative w-[55%] overflow-hidden">
+                <div key={num} className="w-[85%] sm:w-[70%] h-70 sm:h-110 bg-[#5353531c] rounded-[8px] flex flex-col sm:flex-row overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div className="relative sm:w-[55%] overflow-hidden">
                         <div 
                             className="w-full h-full transform transition-transform duration-700 ease-in-out"
                             style={{
@@ -121,11 +121,11 @@ export default function Projects() {
                             </button>
                         </div>
                     </div>
-                    <div className="p-6 flex flex-col justify-between w-[45%]">
+                    <div className="p-6 flex flex-col justify-between items-center sm:w-[45%]">
                         <div>
                             <h2 className="text-2xl font-bold mb-3">{project.title}</h2>
-                            <p className="text-gray-300 mb-4">{project.description}</p>
-                            <div className="flex flex-wrap gap-2 mb-4">
+                            <p className="text-gray-300 mb-4 hidden sm:block">{project.description}</p>
+                            <div className="flex-wrap gap-2 mb-4 hidden sm:flex">
                                 {project.technologies.map((tech, index) => (
                                     <span key={index} className="bg-[#ffffff11] px-3 py-1 rounded-full text-sm">
                                         {tech}

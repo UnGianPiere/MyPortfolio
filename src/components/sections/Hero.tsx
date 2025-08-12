@@ -2,11 +2,47 @@
 import Image from "next/image";
 export default function Hero() {
     return (
-        <section id="hero" className="pt-37 pb-20 relative">
+        <section id="hero" className=" pt-15 sm:pt-37 pb-20 relative px-10 sm:px-[0px]">
             <span className="absolute flex text-[6rem] text-gray-200 opacity-7 select-none pointer-events-none left-0 top-30" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
                 ABOUT
             </span>
-            <div className="flex justify-center gap-10 items-center">
+
+            <div className="block md:hidden">
+                <div className="text-center">
+                    <h1 className="pt-4 font-extrabold text-[28px]">
+                        GIAN PIERE CONDORI
+                    </h1>
+                    <h2 className="pb-7 text-[20px] italic">
+                        Web & App Developer
+                    </h2>
+                </div>
+
+                <div className="flex justify-center mb-8">
+                    <Image
+                        src="/foto-portafolio.webp"
+                        alt="Foto de perfil"
+                        width={200}
+                        height={200}
+                        className="object-cover rounded-full"
+                        style={{
+                            maskImage: 'radial-gradient( rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%)',
+                            WebkitMaskImage: 'radial-gradient( rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%)',
+                        }}
+                    />
+                </div>
+                <div className="h-[1px] bg-[#ffffff6e] w-[50%]"></div>
+                <p className="leading-relaxed mt-7 mb-3">
+                    Egresado de Ingeniería de Sistemas, especializado en programación web y desarrollo de aplicaciones. Cuento con experiencia en gestión de bases de datos y en la creación de soluciones digitales eficientes.
+                </p>
+                <p className="leading-relaxed mb-7">
+                    Me caracterizo por la responsabilidad, el trabajo en equipo y la comunicación efectiva, siempre enfocado en aportar valor en cada proyecto.
+                </p>
+                <div className="flex justify-end">
+                    <div className="h-[1px] w-[50%] bg-[#ffffff6e]"></div>
+                </div>
+            </div>
+
+            <div className="hidden md:flex justify-center gap-10 items-center">
                 <div className="flex flex-col w-180 p-5 relative justify-center">
                     <h1 className="pt-4 font-extrabold text-[30px]">
                         GIAN PIERE CONDORI

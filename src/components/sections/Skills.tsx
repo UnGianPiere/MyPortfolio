@@ -108,7 +108,7 @@ export default function Skills() {
             <span className="absolute flex text-[6rem] text-gray-200 opacity-7 select-none pointer-events-none left-0 top-30" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
                 SKILLS
             </span>
-            <div className="grid grid-cols-4 gap-5 w-[70%] items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 w-[85%] sm:w-[70%] items-center">
                 {cartas.map((item) => (
 
                     <div

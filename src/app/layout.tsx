@@ -26,7 +26,7 @@ export default function RootLayout({
       >
         <div className="bg"></div>
         <Header/>
-        <main className="flex-grow px-10">
+        <main className="flex-grow sm:px-10">
             {children}
         </main>
         <Footer/>
