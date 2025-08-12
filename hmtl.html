@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Reproductor de prueba — local / URL / fetch</title>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:20px;background:#f6f7fb;color:#111}
+  .card{background:white;border-radius:10px;padding:16px;box-shadow:0 6px 20px rgba(15,15,30,0.06);max-width:900px;margin:auto}
+  h1{margin:0 0 8px;font-size:20px}
+  p.small{margin:6px 0;color:#555;font-size:13px}
+  .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .controls{display:flex;gap:8px;align-items:center;margin-top:12px}
+  input[type="range"]{width:180px}
+  .drop{border:2px dashed #d0d7e6;border-radius:8px;padding:18px;text-align:center;color:#6b7280;cursor:pointer}
+  button{background:#0b5fff;color:white;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
+  button.ghost{background:#eef2ff;color:#0b5fff}
+  .meta{margin-top:10px;font-size:13px;color:#444}
+  label{font-size:13px;color:#333}
+  .small-note{font-size:12px;color:#666;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Reproductor de prueba (sin dependencias)</h1>
+  <p class="small">Arrastra un archivo de audio aquí, o pega una URL pública con CORS habilitado. También puedes usar el botón <strong>Fetch & Reproducir</strong> para intentar descargar y reproducir un recurso remoto.</p>
+
+  <div id="drop" class="drop">Arrastra aquí un archivo audio (mp3/m4a/ogg) o haz clic para seleccionar</div>
+  <input id="fileInput" type="file" accept="audio/*" style="display:none">
+
+  <div style="margin-top:12px">
+    <label>Pegar URL de audio pública (CORS required):</label>
+    <div class="row" style="margin-top:6px">
+      <input id="urlInput" type="text" placeholder="https://mi-servidor.com/track.mp3" style="flex:1;padding:8px;border-radius:6px;border:1px solid #dbe3f0">
+      <button id="playUrlBtn">Reproducir URL</button>
+      <button id="fetchPlayBtn" class="ghost">Fetch & Reproducir</button>
+    </div>
+  </div>
+
+  <div class="controls" style="margin-top:14px">
+    <button id="playPause">▶️ Play</button>
+    <button id="stopBtn" class="ghost">⏹ Stop</button>
+    <label>Vol: <input id="vol" type="range" min="0" max="1" step="0.01" value="1"></label>
+    <label>Vel: <input id="speed" type="range" min="0.5" max="2" step="0.1" value="1"></label>
+    <span id="time" style="min-width:110px;text-align:right;font-size:13px;color:#333">00:00 / 00:00</span>
+  </div>
+
+  <input id="seek" type="range" min="0" max="100" value="0" style="width:100%;margin-top:10px">
+
+  <audio id="audio" preload="metadata"></audio>
+
+  <div class="meta" id="meta">No hay pista cargada.</div>
+
+  <div style="margin-top:12px" class="row">
+    <button id="downloadBtn" class="ghost" disabled>⬇️ Descargar blob</button>
+    <button id="openDownloadFolder" disabled class="ghost">🔍 Abrir (solo hint)</button>
+    <div style="flex:1"></div>
+    <div class="small-note">Consejo: si quieres probar con YouTube, usa <code>yt-dlp</code> para descargar el audio y luego arrastra el archivo aquí.</div>
+  </div>
+
+  <div class="small-note" style="margin-top:12px">
+    Comandos útiles (terminal): <br>
+    <code>yt-dlp -f bestaudio -o "%(title)s.%(ext)s" "https://www.youtube.com/watch?v=VIDEO_ID"</code><br>
+    Después arrastra el archivo .m4a/.webm/.mp3 resultante a esta página para probar.
+  </div>
+</div>
+
+<script>
+(() => {
+  const drop = document.getElementById('drop');
+  const fileInput = document.getElementById('fileInput');
+  const audio = document.getElementById('audio');
+  const playPause = document.getElementById('playPause');
+  const stopBtn = document.getElementById('stopBtn');
+  const vol = document.getElementById('vol');
+  const speed = document.getElementById('speed');
+  const time = document.getElementById('time');
+  const seek = document.getElementById('seek');
+  const meta = document.getElementById('meta');
+  const urlInput = document.getElementById('urlInput');
+  const playUrlBtn = document.getElementById('playUrlBtn');
+  const fetchPlayBtn = document.getElementById('fetchPlayBtn');
+  const downloadBtn = document.getElementById('downloadBtn');
+
+  let currentBlob = null;
+  let currentObjectURL = null;
+
+  function setMeta(txt){ meta.textContent = txt; }
+
+  function loadBlob(blob, name){
+    if(currentObjectURL) URL.revokeObjectURL(currentObjectURL);
+    currentBlob = blob;
+    currentObjectURL = URL.createObjectURL(blob);
+    audio.src = currentObjectURL;
+    audio.load();
+    setMeta('Cargada: ' + (name || 'blob') + ' — tamaño: ' + Math.round(blob.size/1024) + ' KB');
+    downloadBtn.disabled = false;
+  }
+
+  function loadFile(file){
+    loadBlob(file, file.name);
+  }
+
+  // Drag & drop
+  drop.addEventListener('click', ()=> fileInput.click());
+  drop.addEventListener('dragover', e => { e.preventDefault(); drop.style.borderColor='#90a4ff'; });
+  drop.addEventListener('dragleave', e => { e.preventDefault(); drop.style.borderColor='#d0d7e6'; });
+  drop.addEventListener('drop', e => {
+    e.preventDefault();
+    drop.style.borderColor='#d0d7e6';
+    const f = e.dataTransfer.files && e.dataTransfer.files[0];
+    if(f) loadFile(f);
+  });
+  fileInput.addEventListener('change', e => {
+    const f = e.target.files && e.target.files[0];
+    if(f) loadFile(f);
+  });
+
+  // Play / Pause
+  playPause.addEventListener('click', () => {
+    if(audio.paused){
+      audio.play().catch(err => alert('Error al reproducir: ' + err.message));
+    } else audio.pause();
+  });
+  audio.addEventListener('play', () => playPause.textContent='⏸️ Pausa');
+  audio.addEventListener('pause', () => playPause.textContent='▶️ Play');
+
+  stopBtn.addEventListener('click', () => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+
+  vol.addEventListener('input', ()=> audio.volume = parseFloat(vol.value));
+  speed.addEventListener('input', ()=> audio.playbackRate = parseFloat(speed.value));
+
+  audio.addEventListener('timeupdate', () => {
+    const cur = audio.currentTime || 0;
+    const dur = audio.duration || 0;
+    seek.value = dur ? (cur/dur*100) : 0;
+    time.textContent = formatTime(cur) + ' / ' + (isFinite(dur) ? formatTime(dur) : '00:00');
+  });
+
+  seek.addEventListener('input', ()=> {
+    const dur = audio.duration || 0;
+    if(dur) audio.currentTime = (seek.value / 100) * dur;
+  });
+
+  function formatTime(s){
+    if(!isFinite(s)) return '00:00';
+    s = Math.floor(s);
+    const m = Math.floor(s/60).toString().padStart(2,'0');
+    const sec = (s%60).toString().padStart(2,'0');
+    return m + ':' + sec;
+  }
+
+  // Play from direct URL (set src directly) — will only work if CORS and server allow
+  playUrlBtn.addEventListener('click', () => {
+    const url = urlInput.value.trim();
+    if(!url) return alert('Pega una URL válida.');
+    // Try setting audio.src directly (fast), but may fail due to CORS
+    audio.src = url;
+    audio.load();
+    audio.play().catch(err => {
+      alert('No se pudo reproducir directamente. Intenta "Fetch & Reproducir" o usa un archivo local. Error: ' + err.message);
+      console.warn(err);
+    });
+    setMeta('Reproduciendo URL directa: ' + url);
+    // clear currentBlob
+    currentBlob = null;
+    downloadBtn.disabled = true;
+  });
+
+  // Fetch -> blob -> play. Good to test CORS and server behavior.
+  fetchPlayBtn.addEventListener('click', async () => {
+    const url = urlInput.value.trim();
+    if(!url) return alert('Pega una URL válida.');
+    setMeta('Descargando desde URL (fetch)... esto puede tardar según el servidor.');
+    downloadBtn.disabled = true;
+    try {
+      const resp = await fetch(url);
+      if(!resp.ok) throw new Error('HTTP ' + resp.status);
+      const contentType = resp.headers.get('content-type') || '';
+      const data = await resp.blob();
+      loadBlob(data, url.split('/').pop() || 'fetched-audio');
+      await audio.play().catch(e => console.warn('play error', e));
+    } catch(err){
+      alert('Error en fetch: ' + err.message + '\n(¿CORS habilitado en el servidor?)');
+      setMeta('Error fetch: ' + err.message);
+    }
+  });
+
+  // Download blob
+  downloadBtn.addEventListener('click', () => {
+    if(!currentBlob) return;
+    const a = document.createElement('a');
+    const filename = 'downloaded-audio.' + (currentBlob.type.split('/')[1] || 'bin');
+    a.href = URL.createObjectURL(currentBlob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  });
+
+  // Informational UI
+  audio.addEventListener('loadedmetadata', ()=> {
+    setMeta((audio.src || 'blob') + ' — duración: ' + formatTime(audio.duration));
+  });
+
+  // initial state
+  setMeta('Listo. Arrastra un archivo o pega una URL pública con CORS.');
+})();
+</script>
+</body>
+</html>
