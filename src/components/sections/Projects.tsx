@@ -89,7 +89,7 @@ export default function Projects() {
                 PROJECTS
             </span>
             {projects.map((project, num) => (
-                <div key={num} className="w-[85%] sm:w-[70%] h-70 sm:h-110 bg-[#53535383] rounded-[8px] flex flex-col sm:flex-row overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div key={num} className="shadow-md w-[85%] sm:w-[70%] h-70 sm:h-110 bg-[#49454533] rounded-[8px] flex flex-col sm:flex-row overflow-hidden hover:shadow-lg transition-shadow duration-300">
                     <div className="relative sm:w-[55%] overflow-hidden">
                         <div 
                             className="w-full h-full transform transition-transform duration-700 ease-in-out"

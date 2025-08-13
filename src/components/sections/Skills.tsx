@@ -110,7 +110,7 @@ export default function Skills() {
                 SKILLS
             </span>
 
-            <div className="grid  grid-cols-2 lg:grid-cols-4  sm:grid-cols-3 gap-5 w-[85%] sm:w-[70%] items-center z-20">
+            <div className="grid  grid-cols-2 lg:grid-cols-4  sm:grid-cols-3 gap-5 w-[85%] sm:w-[70%] items-center">
                 {cartas.map((item) => (
 
                     <div
