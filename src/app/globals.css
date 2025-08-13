@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #0a0a0a;
+  --background: #ffffff;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #0a0a0a;
+    --background: #ffffff;
+    --foreground: #ffffff;
   }
 }
 
@@ -43,11 +43,11 @@ body {
   background: transparent url('https://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
   background-repeat: repeat;
   animation: bg-animation 0.3s infinite;
-  opacity: 0.9;
+  opacity: 0.89;
   visibility: visible;
   pointer-events: none;
   z-index: -1;
-  background-color: #44434386;
+  background-color: #000000;
 }
 
 @keyframes bg-animation {
@@ -95,4 +95,3 @@ body {
     transform: translate(5%, 0);
   }
 }
-
