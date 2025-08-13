@@ -2,8 +2,8 @@
 import Image from "next/image";
 export default function Hero() {
     return (
-        <section id="hero" className=" pt-15 sm:pt-37 pb-20 relative px-10 sm:px-[0px]">
-            <span className="absolute flex text-[6rem] text-gray-200 opacity-7 select-none pointer-events-none left-0 top-30" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
+        <section id="hero" className="lg:pt-37 sm:pt-20 pb-20 relative px-10 sm:px-[0px]">
+            <span className="lg:absolute flex text-[6rem] text-gray-200 opacity-7 select-none pointer-events-none left-0 top-30 justify-center animate-pulse-fast" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
                 ABOUT
             </span>
 
@@ -80,12 +80,12 @@ export default function Hero() {
                 <div className="bottom-20">
                     <div className="flex-col justify-center gap-2 mt-7">
                         <div className="flex justify-center gap-5">
-                            <a href="https://www.linkedin.com/in/piere-condori-huarcaya" target="_blank" aria-label="Linkedin" title="Ir a Linkedin de Gian Piere Condori" rel="noopener noreferrer">
+                            <a href="https://www.linkedin.com/in/piere-condori-huarcaya" target="_blank" aria-label="Linkedin" title="Ir a Linkedin de Gian Piere Condori" rel="noopener noreferrer" className="hover:scale-125 transition">
                                 <svg width="50" height="50">
                                     <use href="/sprite.svg#linkedin-white" />
                                 </svg>
-                            </a>
-                            <a href="https://github.com/UnGianPiere" target="_blank" aria-label="Github" title="Ir a Github de Gian Piere Condori" rel="noopener noreferrer">
+                            </a >
+                            <a href="https://github.com/UnGianPiere" target="_blank" aria-label="Github" title="Ir a Github de Gian Piere Condori" rel="noopener noreferrer" className="hover:scale-125 transition">
                                 <svg width="40" height="50">
                                     <use href="/sprite.svg#github" />
                                 </svg>

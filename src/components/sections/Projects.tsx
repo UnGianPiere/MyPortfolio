@@ -84,10 +84,12 @@ export default function Projects() {
 
 
     return (
-        <section id='projects' className="relative justify-center items-center flex flex-col gap-4 py-20 ">
-
+        <section id='projects' className="relative justify-center items-center flex flex-col gap-10 md:py-20 py-10">
+            <span className="lg:absolute flex text-[6rem] text-gray-200 opacity-7 select-none pointer-events-none left-0 top-50" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
+                PROJECTS
+            </span>
             {projects.map((project, num) => (
-                <div key={num} className="w-[85%] sm:w-[70%] h-70 sm:h-110 bg-[#5353531c] rounded-[8px] flex flex-col sm:flex-row overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div key={num} className="w-[85%] sm:w-[70%] h-70 sm:h-110 bg-[#53535383] rounded-[8px] flex flex-col sm:flex-row overflow-hidden hover:shadow-lg transition-shadow duration-300">
                     <div className="relative sm:w-[55%] overflow-hidden">
                         <div 
                             className="w-full h-full transform transition-transform duration-700 ease-in-out"
@@ -106,16 +108,16 @@ export default function Projects() {
                                 />
                             ))}
                         </div>
-                        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                        <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between gap-2 px-5">
                             <button 
                                 onClick={() => handlePrevImage(num)}
-                                className="bg-black/50 text-white px-3 py-1 rounded-full hover:bg-black/70 transition-colors"
+                                className="bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors size-10"
                             >
                                 ←
                             </button>
                             <button 
                                 onClick={() => handleNextImage(num)}
-                                className="bg-black/50 text-white px-3 py-1 rounded-full hover:bg-black/70 transition-colors"
+                                className="bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors size-10"
                             >
                                 →
                             </button>
@@ -154,9 +156,7 @@ export default function Projects() {
             )
             )}
 
-            <span className="absolute flex text-[6rem] text-gray-200 opacity-7 select-none pointer-events-none left-0 top-50" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
-                PROJECTS
-            </span>
+            
         </section>
     )
 }
