@@ -41,7 +41,11 @@ export default function Header() {
             {/* Header desktop */}
             <div className="hidden sm:block p-8 shadow-md shadow-[#0e0d0d69] font-bold fixed top-0 w-full z-10  bg-[#222222]/90 backdrop-blur-xl">
                 <nav className="flex flex-row justify-evenly relative z-10">
-                    <h1>Mi Portafolio</h1>
+                    <h1>
+                        <div className="size-7">
+                            <img src="/logo-pier.webp" className="scale-170" alt="logo del portafolio de Gian Piere Condori Huarcaya" />
+                        </div>
+                    </h1>
                     <ul className="flex flex-row gap-6">
                         <li>
                             <a href="#hero">Sobre mi</a>
