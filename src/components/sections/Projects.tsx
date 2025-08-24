@@ -10,7 +10,7 @@ export default function Projects() {
     const projects = [
         {
             title: "Modulo de Recaudación",
-            description: "Plataforma web para gestión y control de recaudaciones con panel administrativo.",
+            description: "Sistema desarrollado para la Dirección Regional de Archivo Junín, destinado a gestionar la caja y recaudación institucional. Permite automatizar el registro de ingresos, la emisión de comprobantes y la generación de reportes diarios y mensuales, facilitando la consolidación y control eficiente de los recursos financieros de la institución.",
             technologies: ["React", "JavaScript", "Express", "PostgreSQL"],
             image: "/projects/project2",
             cantidad: 3,
@@ -22,7 +22,7 @@ export default function Projects() {
             description: "Aplicación propuesta para Universidad Continental, para recolectar y analizar feedback educativo en tiempo real con añadido de NLP Y LLM.",
             technologies: ["Next.js", "React", "TypeScript", "Mongodb", "Express"],
             link: "https://edufeedback.vercel.app/",
-            github: "https://github.com/tuusuario/edufeedback",
+            github: "https://github.com/UnGianPiere/EDUFEEDBACK.git",
             image: "/projects/project1",
             cantidad: 2,
             tipo: "abierto"
@@ -41,10 +41,9 @@ export default function Projects() {
 
         {
             title: "Reproductor de musica",
-            description: "Sitio web para reproducir música en línea (API de tercero suele fallar)",
+            description: "Sitio web estilo spotify para reproducir música en línea (API de tercero suele fallar)",
             technologies: ["Next,js", "React", "TypeScript"],
             link: "https://v0-music-streaming-app-vert-five.vercel.app/",
-            github: "https://github.com/tuusuario/reproductor-musica",
             image: "/projects/project3",
             cantidad: 1,
             tipo: "abierto"
