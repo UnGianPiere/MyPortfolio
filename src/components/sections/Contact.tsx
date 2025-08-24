@@ -23,6 +23,7 @@ export default function Contact() {
                                 type="text"
                                 className="mt-1 bg-white/70 focus:bg-gray-200 px-4 py-2 rounded-md outline-none placeholder-gray-500 text-gray-700"
                                 placeholder="Ingrese su nombre"
+                                required
                             />
                         </label>
 
@@ -32,13 +33,15 @@ export default function Contact() {
                                 type="email"
                                 className="mt-1 bg-white/70 focus:bg-gray-200 px-4 py-2 rounded-md outline-none placeholder-gray-500 text-gray-700"
                                 placeholder="Ingrese su correo"
+                                required
                             />
                         </label>
 
                         <label className="flex flex-col text-sm text-white-200">
                             Mensaje
                             <textarea
-                                rows="4"
+                                required
+                                rows={4}
                                 className="mt-1 bg-white/70 focus:bg-gray-200 px-4 py-2 rounded-md outline-none placeholder-gray-500 text-gray-700 resize-none"
                                 placeholder="Escriba su mensaje"
                             ></textarea>
