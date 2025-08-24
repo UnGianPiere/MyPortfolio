@@ -1,9 +1,28 @@
-
+"use client";
 import Image from "next/image";
+import { useState } from "react";
+
 export default function Contact() {
+    const [showToast, setShowToast] = useState(false);
+
+    const copyToClipboard = async () => {
+        try {
+            await navigator.clipboard.writeText('geanpierehuarcaya@gmail.com');
+            setShowToast(true);
+            setTimeout(() => setShowToast(false), 3000);
+        } catch (err) {
+            console.error('Error al copiar:', err);
+        }
+    };
 
     return (
         <section id="contact" className="flex flex-col justify-center items-center relative pb-20 md:py-20 py-10">
+            {/* Toast */}
+            {showToast && (
+                <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300 ease-out translate-x-0 opacity-100">
+                    ✓ Email copiado al portapapeles
+                </div>
+            )}
 
             <span className="lg:absolute text-[5rem] text-gray-200 opacity-15 select-none pointer-events-none left-0 top-30 flicker bounce" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
                 CONTACT
@@ -70,16 +89,12 @@ export default function Contact() {
                             WhatsApp
                         </a>
 
-                        <a href="mailto:geanpierehuarcaya@gmail.com" target="_blank" className="w-full max-w-sm bg-gradient-to-r from-[#b9b7b7] via-[#e4e4e4] to-[#b9b7b7] py-3 text-lg font-medium flex justify-center items-center rounded-full gap-3 text-gray-700 shadow-md hover:scale-105 transition" > <img src="/correo.svg" alt="Correo Gian Piere Condori Huarcaya" className="w-8 h-8" /> geanpierehuarcaya@gmail.com </a>
+                        <button type="button" onClick={copyToClipboard} className="w-full max-w-sm bg-gradient-to-r from-[#b9b7b7] via-[#e4e4e4] to-[#b9b7b7] py-3 text-lg font-medium flex justify-center items-center rounded-full gap-3 text-gray-700 shadow-md hover:scale-105 transition text-[15px]" > <img src="/correo.svg" alt="Correo Gian Piere Condori Huarcaya" className="w-8 h-8" /> <span className="truncate">geanpierehuarcaya@gmail.com</span> </button>
                     
                     </div>
                     
                 </div>
             </form>
-
-
-
-        </section >
-
+        </section>
     )
 }
