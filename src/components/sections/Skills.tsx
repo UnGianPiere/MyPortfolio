@@ -106,7 +106,7 @@ export default function Skills() {
     return (
         <section id="skills" className="flex flex-col justify-center items-center relative pb-20">
 
-            <span className="lg:absolute text-[6rem] text-gray-200 opacity-7 select-none pointer-events-none left-0 top-30" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
+            <span className="lg:absolute text-[5rem] text-gray-200 opacity-15 select-none pointer-events-none left-0 top-30 flicker bounce" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
                 SKILLS
             </span>
 
@@ -130,7 +130,7 @@ export default function Skills() {
                                 group-hover:scale-110"
                         />
                         <p className="font-semibold text-[21px] ">{item.name}</p>
-                        <p className="border-1 rounded-[9px] p-1 absolute left-5 bottom-5 backdrop-blur-3xl">{item.category}</p>
+                        <p className="border-1 rounded-[9px] p-1 absolute left-5 bottom-5 backdrop-blur-3xl text-[12px] font-bold">{item.category}</p>
                     </div>
                 ))}
             </div>

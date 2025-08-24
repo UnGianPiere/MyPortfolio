@@ -56,7 +56,7 @@ export default function Header() {
                         <li>
                             <a href="#projects">Proyectos</a>
                         </li>
-                        <li>Contacto</li>
+                        <li><a href="#contact">Contacto</a></li>
                     </ul>
                 </nav>
             </div>

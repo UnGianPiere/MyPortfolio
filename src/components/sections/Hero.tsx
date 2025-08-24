@@ -3,9 +3,10 @@ import Image from "next/image";
 export default function Hero() {
     return (
         <section id="hero" className="lg:pt-37 sm:pt-20 pb-20 relative px-10 sm:px-[0px]">
-            <span className="lg:absolute flex text-[6rem] text-gray-200 opacity-7 select-none pointer-events-none left-0 top-30 justify-center animate-pulse-fast" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
+            <span className="lg:absolute flex text-[5rem] text-gray-200 opacity-15 select-none pointer-events-none left-0 top-30 justify-center bounce flicker" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
                 ABOUT
             </span>
+
 
             <div className="block md:hidden">
                 <div className="text-center">

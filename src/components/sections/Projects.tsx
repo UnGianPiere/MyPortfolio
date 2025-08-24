@@ -85,7 +85,7 @@ export default function Projects() {
 
     return (
         <section id='projects' className="relative justify-center items-center flex flex-col gap-10 md:py-20 py-10">
-            <span className="lg:absolute flex text-[6rem] text-gray-200 opacity-7 select-none pointer-events-none left-0 top-50" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
+            <span className="bounce flicker lg:absolute flex text-[5rem] text-gray-200 opacity-15 select-none pointer-events-none left-0 top-50" style={{ fontFamily: "'Robinson Outline', sans-serif" }}>
                 PROJECTS
             </span>
             {projects.map((project, num) => (
