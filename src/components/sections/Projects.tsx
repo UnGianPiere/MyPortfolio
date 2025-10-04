@@ -9,6 +9,15 @@ export default function Projects() {
 
     const projects = [
         {
+            title: "Módulo de Ventas e Inventario",
+            description: "Desarrollo enfocado en los módulos de ventas e inventario dentro del ERP de Tracto Leo Import S.A.C. Estos apartados se orientaron a registrar operaciones comerciales, controlar existencias en tiempo real y generar reportes de movimientos, logrando una reducción de errores en el manejo de stock y una optimización en la trazabilidad de productos.",
+            technologies: ["Laravel", "PHP", "MySQL"],
+            image: "/projects/project5",
+            cantidad: 4,
+            tipo: "cerrado"
+        },
+
+        {
             title: "Modulo de Recaudación",
             description: "Sistema desarrollado para la Dirección Regional de Archivo Junín, destinado a gestionar la caja y recaudación institucional. Permite automatizar el registro de ingresos, la emisión de comprobantes y la generación de reportes diarios y mensuales, facilitando la consolidación y control eficiente de los recursos financieros de la institución.",
             technologies: ["React", "JavaScript", "Express", "PostgreSQL"],
@@ -282,8 +291,8 @@ export default function Projects() {
                                 <div
                                     key={i}
                                     className={`w-2 h-2 rounded-full ${selectedImage === `${selectedProject.image}-${i}.jpg`
-                                            ? 'bg-white'
-                                            : 'bg-white/30'
+                                        ? 'bg-white'
+                                        : 'bg-white/30'
                                         }`}
                                 />
                             ))}
