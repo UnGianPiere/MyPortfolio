@@ -28,6 +28,9 @@ export default function Header() {
                             <a href="#hero">Sobre mi</a>
                         </li>
                         <li>
+                            <a href="#hero">Experiencia</a>
+                        </li>
+                        <li>
                             <a href="#skills">Skills</a>
                         </li>
                         <li>
@@ -51,10 +54,13 @@ export default function Header() {
                             <a href="#hero">Sobre mi</a>
                         </li>
                         <li>
-                            <a href="#skills">Skills</a>
+                            <a href="#experience">Experiencia</a>
                         </li>
                         <li>
                             <a href="#projects">Proyectos</a>
+                        </li>
+                        <li>
+                            <a href="#skills">Skills</a>
                         </li>
                         <li><a href="#contact">Contacto</a></li>
                     </ul>
