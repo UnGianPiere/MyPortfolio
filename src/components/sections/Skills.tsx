@@ -98,6 +98,30 @@ export default function Skills() {
             "category": "Herramientas",
             "description": "Herramienta moderna para desarrollo frontend con recarga rápida y build optimizado.",
             "color": "#646CFF"
+        },
+        {
+            "name": "Laravel",
+            "icon": "https://laravel.com/img/logomark.min.svg",
+            "url": "https://laravel.com/",
+            "category": "Framework",
+            "description": "Framework PHP moderno que facilita el desarrollo de aplicaciones web robustas con una sintaxis elegante y arquitectura MVC.",
+            "color": "#FF2D20"
+        },
+        {
+            "name": "Python",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+            "url": "https://www.python.org/",
+            "category": "Lenguaje",
+            "description": "Lenguaje de programación multiparadigma, fácil de aprender y ampliamente usado en desarrollo web, análisis de datos, inteligencia artificial y automatización.",
+            "color": "#3776AB"
+        },
+        {
+            "name": "MySQL",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+            "url": "https://www.mysql.com/",
+            "category": "Bases de datos",
+            "description": "Sistema de gestión de bases de datos relacional de código abierto, ampliamente utilizado para aplicaciones web y empresariales.",
+            "color": "#4479A1"
         }
     ];
 

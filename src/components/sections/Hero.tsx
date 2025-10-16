@@ -69,7 +69,7 @@ export default function Hero() {
                     transition={{ delay: 0.7, duration: 0.6 }}
                     className="leading-relaxed mt-7 mb-3"
                 >
-                    Egresado de Ingeniería de Sistemas, especializado en programación web y desarrollo de aplicaciones. Cuento con experiencia en gestión de bases de datos y en la creación de soluciones digitales eficientes.
+                    Bachiller de Ingeniería de Sistemas, especializado en programación web y desarrollo de aplicaciones. Cuento con experiencia en gestión de bases de datos y en la creación de soluciones digitales eficientes.
                 </motion.p>
 
                 <motion.p 
@@ -124,7 +124,7 @@ export default function Hero() {
                         transition={{ delay: 0.7, duration: 0.6 }}
                         className="leading-relaxed mt-7 mb-3"
                     >
-                        Egresado de Ingeniería de Sistemas, especializado en programación web y desarrollo de aplicaciones. Cuento con experiencia en gestión de bases de datos y en la creación de soluciones digitales eficientes.
+                        Bachiller de Ingeniería de Sistemas, especializado en programación web y desarrollo de aplicaciones. Cuento con experiencia en gestión de bases de datos y en la creación de soluciones digitales eficientes.
                     </motion.p>
 
                     <motion.p 

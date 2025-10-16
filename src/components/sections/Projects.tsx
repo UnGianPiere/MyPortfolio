@@ -10,7 +10,7 @@ export default function Projects() {
 
     const projects = [
         {
-            title: "Landing Page CLínica",
+            title: "Landing Page Clínica",
             description: "Landing page para Clínica Vital (clínica ficticia, proyecto personal en desarrollo). Diseño moderno y responsive.",
             technologies: ["Next,js", "React", "TypeScript"],
             link: "https://clinica-vital.vercel.app/",
@@ -38,7 +38,7 @@ export default function Projects() {
         {
             title: "EduFeedback",
             description: "Aplicación propuesta para Universidad Continental, para recolectar y analizar feedback educativo en tiempo real con añadido de NLP Y LLM.",
-            technologies: ["React", "TypeScript", "Mongodb", "Express"],
+            technologies: ["React", "TypeScript", "Mongodb", "Express","Python"],
             link: "https://edufeedback.vercel.app/",
             github: "https://github.com/UnGianPiere/EDUFEEDBACK.git",
             image: "/projects/project1",
